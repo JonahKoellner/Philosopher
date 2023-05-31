@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/05/31 13:35:51 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/05/31 14:21:52 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	create_mankind(int pn, t_person *universe)
 		pthread_create(&souls[index], NULL, philosopher_mind, param);
 		index++;
 	}
+	index -= 1; //thread join error
 	while (index)
 		pthread_join(souls[index--], NULL);
 	return (0);
