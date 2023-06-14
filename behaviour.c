@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   behaviour.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/05/31 13:36:53 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:09:30 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ void	*philosopher_mind(void	*args)
 	while (alive)
 	{
 		pthread_mutex_lock(param->mutex);
-		printf("%d\t", param->person.nr);
 		alive = rand() % 10;
-		if (!alive)
-			printf("\n\n%d died\n\n", param->person.nr);
+		// check if myself is alive (t_eat, t_die etc..)
+		status_print(&(param->person), param->print_mutex);
 		pthread_mutex_unlock(param->mutex);
 	}
 	return (args);

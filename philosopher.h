@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/05/31 13:36:40 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:02:49 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,30 @@ typedef enum e_Activity{
 	THINK
 }t_activity;
 
+typedef struct s_personality
+{
+	int	t_eat;
+	int	t_sleep;
+	int	t_die;
+	int	hunger;
+}t_personality;
+
 typedef struct s_person
 {
-	int			nr;
-	t_activity	active;
+	int				nr;
+	t_activity		active;
+	t_personality	perso;
 }t_person;
 
 typedef struct s_param
 {
 	t_person		person;
 	pthread_mutex_t	*mutex;
+	pthread_mutex_t	*print_mutex;
 }t_param;
 
 int		ft_atoi(const char *str);
 void	*philosopher_mind(void	*param);
-int		print_activity(t_activity activity);
+int		status_print(t_person *philosoper, pthread_mutex_t *print_mutex);
 
 #endif

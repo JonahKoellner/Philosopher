@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/05/31 14:21:52 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:03:05 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_error(void)
 	printf("Error accured\n");
 }
 
-t_person	*create_universe(int number)
+t_person	*create_universe(int number, t_personality perso)
 {
 	t_person	*ret_universe;
 	int			index;
@@ -30,6 +30,7 @@ t_person	*create_universe(int number)
 	{
 		ret_universe[index].nr = index + 1;
 		ret_universe[index].active = THINK;
+		ret_universe[index].perso = perso;
 		index++;
 	}
 	return (ret_universe);
@@ -40,16 +41,19 @@ int	create_mankind(int pn, t_person *universe)
 	int				index;
 	pthread_t		*souls;
 	pthread_mutex_t	*mutex;
+	pthread_mutex_t	*print_mutex;
 	t_param			*param;
 
 	souls = malloc(pn * sizeof(pthread_t));
 	index = 0;
 	mutex = malloc(sizeof(pthread_mutex_t));
+	print_mutex = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(mutex, NULL);
 	while (index < pn)
 	{
 		param = malloc(sizeof(t_param));
 		param->mutex = mutex;
+		param->print_mutex = print_mutex;
 		param->person = universe[index];
 		pthread_create(&souls[index], NULL, philosopher_mind, param);
 		index++;
@@ -60,18 +64,32 @@ int	create_mankind(int pn, t_person *universe)
 	return (0);
 }
 
+int	check_for_error(int argc, char *argv[])
+{
+	if (argc < 6)
+		return (ft_error(), 1);
+	if (ft_atoi(argv[1]) <= 0 || ft_atoi(argv[2]) < 0
+		|| ft_atoi(argv[3]) < 0 || ft_atoi(argv[4]) < 0)
+		return (printf("Negative time / Non existence would be wild.\n"), -1);
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
-	int			pn;
-	t_person	*universe;
+	t_personality	personality;
+	int				pn;
+	t_person		*universe;
 
-	if (!(argc > 1 && argc < 6))
-		return (ft_error(), -1);
+	if (check_for_error(argc, argv))
+		return (1);
 	pn = ft_atoi(argv[1]);
-	printf("Amount of philosophers: %d\n", pn);
-	if (pn <= 0)
-		return (printf("Negative / Non existence would be wild.\n"), -1);
-	universe = create_universe(pn);
+	personality.t_die = ft_atoi(argv[2]);
+	personality.t_eat = ft_atoi(argv[3]);
+	personality.t_sleep = ft_atoi(argv[4]);
+	personality.hunger = -1;
+	if (argc == 5)
+		personality.hunger = ft_atoi(argv[5]);
+	universe = create_universe(pn, personality);
 	if (universe == NULL)
 		return (printf("It seems like I'm not god\n"), -1);
 	srand(time(NULL));
