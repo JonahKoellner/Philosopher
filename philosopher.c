@@ -6,7 +6,7 @@
 /*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/06/14 15:03:05 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/06/29 16:20:47 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,21 @@ int	create_mankind(int pn, t_person *universe)
 {
 	int				index;
 	pthread_t		*souls;
-	pthread_mutex_t	*mutex;
+	pthread_mutex_t	**mutex;
 	pthread_mutex_t	*print_mutex;
 	t_param			*param;
 
 	souls = malloc(pn * sizeof(pthread_t));
-	index = 0;
-	mutex = malloc(sizeof(pthread_mutex_t));
+	index = -1;
+	mutex = malloc(pn * sizeof(pthread_mutex_t *));
 	print_mutex = malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(mutex, NULL);
+	while (++index < pn)
+		pthread_mutex_init(mutex[index], NULL);
+	index = 0;
 	while (index < pn)
 	{
 		param = malloc(sizeof(t_param));
-		param->mutex = mutex;
+		param->forks = mutex;
 		param->print_mutex = print_mutex;
 		param->person = universe[index];
 		pthread_create(&souls[index], NULL, philosopher_mind, param);

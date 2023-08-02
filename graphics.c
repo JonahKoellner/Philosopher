@@ -6,39 +6,33 @@
 /*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 11:06:07 by jkollner          #+#    #+#             */
-/*   Updated: 2023/06/14 15:07:27 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/06/16 10:35:55 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-int	print_activity(t_activity activity)
+char	*print_activity(t_activity activity)
 {
 	if (activity == EAT)
-		printf("Eating\n");
+		return ("Eating");
 	else if (activity == SLEEP)
-		printf("Sleeping\n");
+		return ("Sleeping");
 	else if (activity == THINK)
-		printf("THONK\n");
+		return ("THONK");
 	else
-		return (0);
-	return (1);
+		return (NULL);
+	return (NULL);
 }
 
 int	status_print(t_person *philosoper, pthread_mutex_t *print_mutex)
 {
-	// close mutex
 	pthread_mutex_lock(print_mutex);
-
-	// print out the status and the time of the philosopher
-		// things to print:
-			// time
-			// nr
-			// hunger
-			// print_activity
-		printf("NR: %d\t", philosoper->nr);
-		print_activity(philosoper->active);
-	// open mutex and return
+	printf("---\t---\t---------\t\t-\n");
+	printf("|MS\t\t|NR\t|Activity\t|\n");
+	printf("|%ld\t", time(NULL));
+	printf("|%d\t", philosoper->nr);
+	printf("|%s\t\t|\n", print_activity(philosoper->active));
 	pthread_mutex_unlock(print_mutex);
 	return (0);
 }

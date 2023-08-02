@@ -6,7 +6,7 @@
 /*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/06/14 15:02:49 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/06/29 16:17:57 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_person
 typedef struct s_param
 {
 	t_person		person;
-	pthread_mutex_t	*mutex;
+	pthread_mutex_t	**forks;
 	pthread_mutex_t	*print_mutex;
 }t_param;
 
