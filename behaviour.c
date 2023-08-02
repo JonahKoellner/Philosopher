@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/02 11:20:22 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:34:15 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,23 @@ void	*philosopher_mind(void	*args)
 	param = (t_param *)args;
 	while (alive)
 	{
-		printf("Beginning of philo brain %d using forks\nf1:%d\tf2:%d\n",
-		param->person.nr, param->person.fork1, param->person.fork2);
-		break;
+		// printf("Beginning of philo brain %d using forks\nf1:%d\tf2:%d\n",
+		// param->person.nr, param->person.fork1, param->person.fork2);
+		// break;
 		// if (param->person.perso.hunger > 0
 			// && param->person.eaten < param->person.perso.hunger)
-		if (!pthread_mutex_lock(param->forks[param->person.fork1]
-				&& !pthread_mutex_lock(param->forks[param->person.fork2])))
-			// GOT THE FORKS
+		printf("%d start of brain\n", param->person.nr);
 
+		if (!pthread_mutex_lock(param->forks[param->person.fork1])
+			&& !pthread_mutex_lock(param->forks[param->person.fork2]))
+		{
+			printf("%d got the forks\t%d %d\n", param->person.nr,
+				param->person.fork1, param->person.fork2);
+			usleep(100);
+			pthread_mutex_unlock(param->forks[param->person.fork1]);
+			pthread_mutex_unlock(param->forks[param->person.fork2]);
+		}
+		printf("%d end of brain\n", param->person.nr);
 		/*
 		Bahviour:
 			if (hunger < time_philo_has_to_eat)
