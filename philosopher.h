@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/06/29 16:17:57 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/08/02 10:55:09 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct s_personality
 typedef struct s_person
 {
 	int				nr;
+	int				eaten;
+	int				fork1;
+	int				fork2;
 	t_activity		active;
 	t_personality	perso;
 }t_person;
@@ -48,6 +51,7 @@ typedef struct s_param
 }t_param;
 
 int		ft_atoi(const char *str);
+void	*ft_calloc(size_t count, size_t size);
 void	*philosopher_mind(void	*param);
 int		status_print(t_person *philosoper, pthread_mutex_t *print_mutex);
 

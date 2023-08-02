@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   behaviour.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/07/27 10:08:00 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/08/02 11:05:07 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,20 @@ void	*philosopher_mind(void	*args)
 	param = (t_param *)args;
 	while (alive)
 	{
+		printf("Beginning of philo brain %d using forks\nf1:%d\tf2:%d\n", param->person.nr, param->person.fork1, param->person.fork2);
+		break;
+		// if (param->person.perso.hunger > 0
+			// && param->person.eaten < param->person.perso.hunger)
+		// if (pthread_mutex_trylock(param->forks[param->person.nr]))
+		/*
+		Bahviour:
+			if (hunger < time_philo_has_to_eat)
+				if (try to get the fork to eat)
+					sleep(time_to_eat)
+			sleep(time_to_sleep)
+			set_state_activity = thinking
 
-		/**
-		 * Behaviour:
-		 	* alive bahvoiur is being decided by how long it was since last eaten
-			if last_eaten.time() - now.time() <= param->person.t_eat
-				// still alive */
-				//try to eat (if you still need to (hunger given))
-				//pthread_mutex_lock(param->forks[param->person.nr]);
-				//pthread_mutex_lock(param->forks[param->person.nr + 1]);
-			//		take forks and lock them.
-			//		sleep for the time after eating
-			//	if not than think
-			//else
-				// died
-		//*/
-
+		*/
 
 		//pthread_mutex_lock(param->forks[param->person.nr]);
 		//alive = rand() % 10;
