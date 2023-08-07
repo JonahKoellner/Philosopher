@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/02 11:15:33 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:03:35 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <pthread.h>
 # include <unistd.h>
 # include <time.h>
+# include <sys/time.h>
 
 typedef enum e_Activity{
 	EAT,

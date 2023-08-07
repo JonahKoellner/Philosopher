@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:39:51 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/02 10:08:58 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:11:59 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ret_mem;
@@ -71,7 +70,6 @@ void	*ft_calloc(size_t count, size_t size)
 	ret_mem = (void *)malloc(count * size);
 	if (ret_mem == NULL)
 		return (NULL);
-
 	ft_bzero(ret_mem, count * size);
 	return (ret_mem);
 }
