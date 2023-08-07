@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 11:06:07 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/02 15:06:33 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 10:38:31 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*print_activity(t_activity activity)
 int	status_print(t_person *philosoper, pthread_mutex_t *print_mutex)
 {
 	pthread_mutex_lock(print_mutex);
-	printf("%ld %d has taken a fork\n", time(NULL), philosoper->nr);
+	printf("%ld %d has taken a fork and eating for %d\n", time(NULL), philosoper->nr, philosoper->perso.t_eat);
 	pthread_mutex_unlock(print_mutex);
 	return (0);
 }

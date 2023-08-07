@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/02 15:47:23 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 10:34:39 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_person	*create_universe(int number, t_personality perso)
 		ret_universe[index] = (t_person){.nr = index + 1,
 			.active = THINK, .perso = perso,
 			.fork1 = index, .fork2 = index + 1};
-
 	ret_universe[index] = (t_person){.nr = index + 1,
 		.active = THINK, .perso = perso, .fork1 = index, .fork2 = 0};
 	return (ret_universe);
@@ -63,8 +62,8 @@ int	create_mankind(int pn, t_person *universe)
 		param->print_mutex = print_mutex;
 		param->person = universe[index];
 		pthread_create(&souls[index], NULL, philosopher_mind, param);
-		// if (index % 2 == 0)
-		// 	usleep(100);
+		if (index % 2 == 0)
+			usleep(param->person.perso.t_eat);
 		index++;
 	}
 	index -= 1;
