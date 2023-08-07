@@ -6,11 +6,23 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 14:03:20 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:10:28 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
+
+int	eating(t_param *param)
+{
+	param->person.active = EAT;
+	status_print(&param->person, param->print_mutex);
+	sleep_ms(param->person.perso.t_eat);
+	param->person.stomach.last_eaten_ms = get_time_ms();
+	param->person.stomach.times_eaten++;
+	pthread_mutex_unlock(param->forks[param->person.fork2]);
+	pthread_mutex_unlock(param->forks[param->person.fork1]);
+	return (0);
+}
 
 void	*philosopher_mind(void	*args)
 {
@@ -28,13 +40,7 @@ void	*philosopher_mind(void	*args)
 		if (!pthread_mutex_lock(param->forks[param->person.fork1])
 			&& (!pthread_mutex_lock(param->forks[param->person.fork2])))
 		{
-			param->person.active = EAT;
-			status_print(&param->person, param->print_mutex);
-			sleep_ms(param->person.perso.t_eat);
-			param->person.stomach.last_eaten_ms = get_time_ms();
-			param->person.stomach.times_eaten++;
-			pthread_mutex_unlock(param->forks[param->person.fork2]);
-			pthread_mutex_unlock(param->forks[param->person.fork1]);
+			eating(param);
 			param->person.active = SLEEP;
 			sleep_ms(param->person.perso.t_sleep);
 			status_print(&param->person, param->print_mutex);
