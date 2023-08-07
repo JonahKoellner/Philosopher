@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 13:55:42 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:03:20 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*philosopher_mind(void	*args)
 		if (param->person.stomach.last_eaten_ms == -1)
 			param->person.stomach.last_eaten_ms = get_time_ms();
 		if (get_time_ms() - param->person.stomach.last_eaten_ms
-			< param->person.perso.t_die)
+			> param->person.perso.t_die)
 			break ;
 		if (!pthread_mutex_lock(param->forks[param->person.fork1])
 			&& (!pthread_mutex_lock(param->forks[param->person.fork2])))
@@ -42,6 +42,7 @@ void	*philosopher_mind(void	*args)
 		param->person.active = THINK;
 		status_print(&param->person, param->print_mutex);
 	}
-	printf("philosopher %d out\n", param->person.nr);
+	printf("philosopher %d out (eaten: %d)\n", param->person.nr,
+		param->person.stomach.times_eaten);
 	return (args);
 }

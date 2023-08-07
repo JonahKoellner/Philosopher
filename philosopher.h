@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 13:37:51 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:02:24 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_personality
 
 typedef struct s_stomach
 {
-	int	last_eaten_ms;
-	int	times_eaten;
+	long long	last_eaten_ms;
+	int			times_eaten;
 }t_stomach;
 
 typedef struct s_person
