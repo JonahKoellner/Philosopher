@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:02:06 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 13:10:06 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:21:09 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ long long	get_time_ms(void)
 
 	if (gettimeofday(&t_val, NULL) == -1)
 		return (printf("Time Error\n"), 0);
-	return ((long long)t_val.tv_sec * 1000000 + t_val.tv_usec);
+	return ((long long)t_val.tv_sec * 1000 + t_val.tv_usec / 1000);
 }
 
 int	sleep_ms(int ms)

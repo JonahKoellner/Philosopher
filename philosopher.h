@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 13:03:35 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:14:30 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ typedef struct s_param
 	pthread_mutex_t	*print_mutex;
 }t_param;
 
-int		ft_atoi(const char *str);
-void	*ft_calloc(size_t count, size_t size);
-void	*philosopher_mind(void	*param);
-int		status_print(t_person *philosoper, pthread_mutex_t *print_mutex);
+int			ft_atoi(const char *str);
+void		*ft_calloc(size_t count, size_t size);
+void		*philosopher_mind(void	*param);
+int			status_print(t_person *philosoper, pthread_mutex_t *print_mutex);
+long long	get_time_ms(void);
+int			sleep_ms(int ms);
 
 #endif

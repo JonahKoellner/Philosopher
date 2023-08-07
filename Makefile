@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:29:31 by jkollner          #+#    #+#              #
-#    Updated: 2023/05/31 13:49:38 by jkollner         ###   ########.fr        #
+#    Updated: 2023/08/07 13:15:02 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS = -Wall -Wextra -Werror
 NAME = philosopher.a
 
 ## ------------------------ Source / Files -----------------------##
-SRC = philosopher.c utils.c behaviour.c graphics.c
+SRC = philosopher.c utils.c behaviour.c graphics.c time.c
 
 ## ------------------------ Libraries -----------------------##
 PTHREAD = -pthread
