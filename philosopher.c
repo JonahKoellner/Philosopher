@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 10:34:39 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:28:27 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	create_mankind(int pn, t_person *universe)
 		param->person = universe[index];
 		pthread_create(&souls[index], NULL, philosopher_mind, param);
 		if (index % 2 == 0)
-			usleep(param->person.perso.t_eat);
+			sleep_ms(index);
 		index++;
 	}
 	index -= 1;

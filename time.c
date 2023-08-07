@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:02:06 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 13:21:09 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:31:17 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ long long	get_time_ms(void)
 
 int	sleep_ms(int ms)
 {
-	int	start_time;
+	long long	start_time;
 
 	start_time = get_time_ms();
 	while (get_time_ms() - start_time < ms)

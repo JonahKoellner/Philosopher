@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 10:53:53 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:25:05 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	*philosopher_mind(void	*args)
 		{
 			param->person.active = EAT;
 			status_print(&param->person, param->print_mutex);
-			usleep(param->person.perso.t_eat);
+			sleep_ms(param->person.perso.t_eat);
 			pthread_mutex_unlock(param->forks[param->person.fork2]);
 			pthread_mutex_unlock(param->forks[param->person.fork1]);
 			param->person.active = SLEEP;
-			usleep(param->person.perso.t_sleep);
+			sleep_ms(param->person.perso.t_sleep);
 			status_print(&param->person, param->print_mutex);
 		}
 		param->person.active = THINK;
