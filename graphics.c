@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 11:06:07 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 13:30:58 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 17:46:03 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 char	*print_activity(t_activity activity)
 {
 	if (activity == EAT)
-		return ("Eating");
+		return ("eating");
 	else if (activity == SLEEP)
-		return ("Sleeping");
+		return ("sleeping");
 	else if (activity == THINK)
-		return ("Thinking");
+		return ("thinking");
 	else
 		return ("");
-	return ("");
 }
 
 int	status_print(t_person *philosoper, pthread_mutex_t *print_mutex)
