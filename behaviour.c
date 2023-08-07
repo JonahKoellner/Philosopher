@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 13:25:05 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:45:52 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,20 @@
 void	*philosopher_mind(void	*args)
 {
 	t_param	*param;
-	int		alive;
 
-	alive = 1;
 	param = (t_param *)args;
-	while (alive)
+	while (param->person.perso.hunger < 0
+		|| param->person.perso.hunger > param->person.stomach.times_eaten)
 	{
+		if (param->person.stomach.last_eaten_ms == -1)
+			param->person.stomach.last_eaten_ms = get_time_ms();
 		if (!pthread_mutex_lock(param->forks[param->person.fork1])
 			&& (!pthread_mutex_lock(param->forks[param->person.fork2])))
 		{
 			param->person.active = EAT;
 			status_print(&param->person, param->print_mutex);
 			sleep_ms(param->person.perso.t_eat);
+			param->person.stomach.last_eaten_ms = get_time_ms();
 			pthread_mutex_unlock(param->forks[param->person.fork2]);
 			pthread_mutex_unlock(param->forks[param->person.fork1]);
 			param->person.active = SLEEP;

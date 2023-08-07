@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 13:31:03 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:37:51 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,16 @@ typedef struct s_personality
 	int	hunger;
 }t_personality;
 
-// typedef struct s_stomach
-// {
-	// int	last_eaten_ms;
-	// int	times_eaten;
-// }t_stomach;
+typedef struct s_stomach
+{
+	int	last_eaten_ms;
+	int	times_eaten;
+}t_stomach;
 
 typedef struct s_person
 {
 	int				nr;
-	int				eaten;
-	// t_stomach		stomach;
+	t_stomach		stomach;
 	int				fork1;
 	int				fork2;
 	t_activity		active;
