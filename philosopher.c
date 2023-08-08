@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 17:46:25 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:40:35 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	create_mankind(int pn, t_person *universe)
 	pthread_mutex_t	**mutex;
 	pthread_mutex_t	*print_mutex;
 	t_param			*param;
+	int				*death_flag;
 
 	souls = ft_calloc(pn, sizeof(pthread_t));
 	mutex = ft_calloc(pn, sizeof(pthread_mutex_t *));
@@ -56,21 +57,29 @@ int	create_mankind(int pn, t_person *universe)
 	index = -1;
 	while (++index < pn)
 		pthread_mutex_init(mutex[index], NULL);
+	pthread_mutex_init(print_mutex, NULL);
 	index = 0;
+	death_flag = ft_calloc(1, sizeof(int));
 	while (index < pn)
 	{
 		param = malloc(sizeof(t_param));
 		param->forks = mutex;
 		param->print_mutex = print_mutex;
 		param->person = universe[index];
+		param->death_flag = death_flag;
 		pthread_create(&souls[index], NULL, philosopher_mind, param);
 		if (index % 2 == 0)
 			sleep_ms(index);
 		index++;
 	}
+	while (*death_flag == 0)
+		sleep_ms(1);
 	index -= 1;
-	while (index)
-		pthread_join(souls[index--], NULL);
+	if (*death_flag == 1)
+		while (index)
+			pthread_detach(souls[index--]);
+	// while (index)
+		// pthread_join(souls[index--], NULL);
 	return (0);
 }
 

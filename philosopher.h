@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 14:02:24 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:09:25 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_param
 	t_person		person;
 	pthread_mutex_t	**forks;
 	pthread_mutex_t	*print_mutex;
+	int				*death_flag;
 }t_param;
 
 int			ft_atoi(const char *str);
