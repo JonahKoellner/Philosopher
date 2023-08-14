@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/14 12:55:29 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:44:48 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	*philosopher_mind(void	*args)
 			if (param->person->perso.t_sleep > param->person->perso.t_die)
 			{
 				sleep_ms(param->person->perso.t_die);
-				// pthread_mutex_lock(param->print_mutex);
-				// printf("%lld %d died\n", get_time_ms(), param->person->nr);
 				*param->death_flag = 1;
 				break ;
 			}
@@ -68,6 +66,7 @@ void	*philosopher_mind(void	*args)
 	{
 		pthread_mutex_lock(param->print_mutex);
 		printf("%lld %d died\n", get_time_ms(), param->person->nr);
+		pthread_mutex_unlock(param->print_mutex);
 	}
 	pthread_exit(NULL);
 	return (args);
