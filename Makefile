@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:29:31 by jkollner          #+#    #+#              #
-#    Updated: 2023/08/14 08:58:22 by jkollner         ###   ########.fr        #
+#    Updated: 2023/08/14 10:52:49 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = philosopher.a
 
 ## ------------------------ Source / Files -----------------------##
 SRC = philosopher.c utils.c behaviour.c graphics.c time.c death.c
-
+OBJ = ${SRC:.c=.o}
 ## ------------------------ Libraries -----------------------##
 PTHREAD = -pthread
 
@@ -25,14 +25,18 @@ PTHREAD = -pthread
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(FLAGS) $(PTHREAD) $(SRC) -o $(NAME)
+$(NAME): ${OBJ}
+	$(CC) $(FLAGS) $(PTHREAD) $(OBJ) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(FLAGS) $< -c -o $@
 
 re: fclean all
 
 clean:
+	rm -f $(OBJ)
 
-fclean:
-	rm $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
 .PHONY: fclean

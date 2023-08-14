@@ -6,14 +6,29 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/14 09:26:54 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/14 10:16:34 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-void	ft_error(void)
+void	ft_error(pthread_t *s, pthread_mutex_t **m, pthread_mutex_t *p, int *d)
 {
+	int	index;
+
+	index = 0;
+	if (s != NULL)
+		free(s);
+	if (m != NULL)
+	{
+		while (m[index] != NULL)
+			free(m[index]);
+		free(m);
+	}
+	if (p != NULL)
+		free(p);
+	if (d != NULL)
+		free(d);
 	printf("Error occured\n");
 }
 
@@ -53,13 +68,15 @@ int	create_mankind(int pn, t_person *universe)
 		mutex[index++] = ft_calloc(1, sizeof(pthread_mutex_t));
 	print_mutex = ft_calloc(1, sizeof(pthread_mutex_t));
 	if (souls == NULL || mutex == NULL || print_mutex == NULL)
-		ft_error(); // !!! CLEAN ALLOCATIONS
+		ft_error(souls, mutex, print_mutex, NULL);
 	index = -1;
 	while (++index < pn)
 		pthread_mutex_init(mutex[index], NULL);
 	pthread_mutex_init(print_mutex, NULL);
 	index = 0;
 	death_flag = ft_calloc(1, sizeof(int));
+	if (death_flag == NULL)
+		ft_error(souls, mutex, print_mutex, NULL);
 	while (index < pn)
 	{
 		param = malloc(sizeof(t_param));
@@ -79,10 +96,11 @@ int	create_mankind(int pn, t_person *universe)
 int	check_for_error(int argc, char *argv[])
 {
 	if (argc < 5)
-		return (ft_error(), 1);
+		return (ft_error(NULL, NULL, NULL, NULL), 1);
 	if (ft_atoi(argv[1]) <= 0 || ft_atoi(argv[2]) < 0
 		|| ft_atoi(argv[3]) < 0 || ft_atoi(argv[4]) < 0)
-		return (printf("Negative time / Non existence would be wild.\n"), -1);
+		return (printf("%s nr_philo t_die t_eat t_sleep [times_to_eat]\n",
+				argv[0]), -1);
 	return (0);
 }
 
