@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/08 12:40:35 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/14 09:26:54 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_person	*create_universe(int number, t_personality perso)
 	t_person	*ret_universe;
 	int			index;
 
-	ret_universe = malloc(number * sizeof(t_person));
+	ret_universe = ft_calloc((number + 1), sizeof(t_person));
 	if (ret_universe == NULL)
 		return (NULL);
 	index = -1;
@@ -65,21 +65,14 @@ int	create_mankind(int pn, t_person *universe)
 		param = malloc(sizeof(t_param));
 		param->forks = mutex;
 		param->print_mutex = print_mutex;
-		param->person = universe[index];
+		param->person = &universe[index];
 		param->death_flag = death_flag;
 		pthread_create(&souls[index], NULL, philosopher_mind, param);
 		if (index % 2 == 0)
 			sleep_ms(index);
 		index++;
 	}
-	while (*death_flag == 0)
-		sleep_ms(1);
-	index -= 1;
-	if (*death_flag == 1)
-		while (index)
-			pthread_detach(souls[index--]);
-	// while (index)
-		// pthread_join(souls[index--], NULL);
+	death(death_flag, universe, souls, index);
 	return (0);
 }
 
