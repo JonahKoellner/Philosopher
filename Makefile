@@ -6,16 +6,16 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:29:31 by jkollner          #+#    #+#              #
-#    Updated: 2023/08/14 10:52:49 by jkollner         ###   ########.fr        #
+#    Updated: 2023/08/14 10:55:41 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ## ------------------------ Compiler / Project -----------------------##
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-NAME = philosopher.a
+NAME = philo
 
-## ------------------------ Source / Files -----------------------##
+## ------------------------ Source / Objects / Files -----------------------##
 SRC = philosopher.c utils.c behaviour.c graphics.c time.c death.c
 OBJ = ${SRC:.c=.o}
 ## ------------------------ Libraries -----------------------##
