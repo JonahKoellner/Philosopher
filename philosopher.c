@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/14 10:16:34 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/14 12:49:40 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,12 @@ int	check_for_error(int argc, char *argv[])
 		|| ft_atoi(argv[3]) < 0 || ft_atoi(argv[4]) < 0)
 		return (printf("%s nr_philo t_die t_eat t_sleep [times_to_eat]\n",
 				argv[0]), -1);
+	if (ft_atoi(argv[1]) == 1)
+	{
+		sleep_ms(ft_atoi(argv[2]));
+		printf("%lld 1 died\n", get_time_ms());
+		return (1);
+	}
 	return (0);
 }
 
