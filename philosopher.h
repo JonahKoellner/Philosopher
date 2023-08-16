@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 10:30:21 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/16 10:53:13 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@
 # include <time.h>
 # include <sys/time.h>
 
+/**
+ * 	EAT,
+	SLEEP,
+	THINK
+*/
 typedef enum e_Activity{
 	EAT,
 	SLEEP,
 	THINK
 }t_activity;
 
+/**
+ * 	int	t_eat;
+	int	t_sleep;
+	int	t_die;
+	int	hunger;
+*/
 typedef struct s_personality
 {
 	int	t_eat;
@@ -34,12 +45,24 @@ typedef struct s_personality
 	int	hunger;
 }t_personality;
 
+/**
+ * 	long long	last_eaten_ms;
+	int			times_eaten;
+*/
 typedef struct s_stomach
 {
 	long long	last_eaten_ms;
 	int			times_eaten;
 }t_stomach;
 
+/**
+ * 	int				nr;
+	t_stomach		stomach;
+	int				fork1;
+	int				fork2;
+	t_activity		active;
+	t_personality	perso;
+*/
 typedef struct s_person
 {
 	int				nr;
@@ -50,6 +73,12 @@ typedef struct s_person
 	t_personality	perso;
 }t_person;
 
+/**
+ * 	t_person		*person;
+	pthread_mutex_t	**forks;
+	pthread_mutex_t	*print_mutex;
+	int				*death_flag;
+*/
 typedef struct s_param
 {
 	t_person		*person;
@@ -58,6 +87,12 @@ typedef struct s_param
 	int				*death_flag;
 }t_param;
 
+/**
+ * 	t_person		*humans;
+	pthread_t		*souls;
+	pthread_mutex_t	**mutexes;
+	pthread_mutex_t	*print_mutex;
+*/
 typedef struct s_universe
 {
 	t_person		*humans;

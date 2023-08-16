@@ -6,13 +6,13 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:29:31 by jkollner          #+#    #+#              #
-#    Updated: 2023/08/16 09:14:42 by jkollner         ###   ########.fr        #
+#    Updated: 2023/08/16 11:15:14 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ## ------------------------ Compiler / Project -----------------------##
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 NAME = philo
 
 ## ------------------------ Source / Objects / Files -----------------------##

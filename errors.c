@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 09:14:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 10:30:12 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/16 11:41:31 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ void	clean_up(t_universe *universe)
 
 	if (universe->humans != NULL)
 		free(universe->humans);
+	index = 0;
 	if (universe->souls != NULL)
+	{
+		while (universe->souls[index])
+			pthread_detach(universe->souls[index++]);
 		free(universe->souls);
+	}
 	if (universe->print_mutex != NULL)
 		free(universe->print_mutex);
 	index = 0;

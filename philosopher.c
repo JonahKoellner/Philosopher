@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 10:30:27 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/16 11:38:41 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_universe	*alloc_universe(int pn, t_person *people)
 	if (universe == NULL)
 		return (free(people), ft_error(), NULL);
 	universe->humans = people;
-	universe->souls = ft_calloc(pn, sizeof(pthread_t));
+	universe->souls = ft_calloc(pn + 1, sizeof(pthread_t));
 	universe->print_mutex = ft_calloc(1, sizeof(pthread_mutex_t));
 	if (universe->souls == NULL || universe->print_mutex == NULL)
 		return (clean_up(universe), ft_error(), NULL);

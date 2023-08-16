@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 08:55:10 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 10:17:02 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/16 11:42:35 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,17 @@ int	finished_eating(t_person *humans, int max)
 
 int	death(int *death, t_person *humans, pthread_t *souls, int index)
 {
+	int	iter;
+
 	while (*death == 0 && !finished_eating(humans, index))
+	{
 		sleep_ms(1);
+	}
+	iter = 0;
 	if (*death == 1)
 	{
-		while (*souls)
-		{
-			pthread_detach(*souls);
-			souls++;
-		}
+		while (iter < index)
+			pthread_detach(souls[iter++]);
 	}
 	return (0);
 }
