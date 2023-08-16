@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 09:59:37 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/16 10:30:21 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int			sleep_ms(int ms);
 int			death(int *death, t_person *universe, pthread_t *souls, int index);
 void		ft_error(void);
 void		clean_up(t_universe *universe);
+int			check_for_error(int argc, char *argv[]);
 
 #endif

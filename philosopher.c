@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 09:58:41 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/16 10:30:27 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 t_person	*create_people(int number, t_personality perso)
 {
-	t_person	*ret_universe;
+	t_person	*ret_people;
 	int			index;
 
-	ret_universe = ft_calloc((number + 1), sizeof(t_person));
-	if (ret_universe == NULL)
+	ret_people = ft_calloc((number + 1), sizeof(t_person));
+	if (ret_people == NULL)
 		return (NULL);
 	index = -1;
 	while (++index < number - 1)
-		ret_universe[index] = (t_person){.nr = index + 1,
+		ret_people[index] = (t_person){.nr = index + 1,
 			.active = THINK, .perso = perso,
 			.fork1 = index, .fork2 = index + 1,
 			.stomach = (t_stomach){.times_eaten = 0, .last_eaten_ms = -1}};
-	ret_universe[index] = (t_person){.nr = index + 1,
+	ret_people[index] = (t_person){.nr = index + 1,
 		.active = THINK, .perso = perso, .fork1 = index, .fork2 = 0,
 		.stomach = (t_stomach){.times_eaten = 0, .last_eaten_ms = -1}};
-	return (ret_universe);
+	return (ret_people);
 }
 
 t_universe	*alloc_universe(int pn, t_person *people)
@@ -86,24 +86,7 @@ int	create_universe(int pn, t_person *people)
 		index++;
 	}
 	death(death_flag, universe->humans, universe->souls, index);
-	return (clean_up(universe), 0);
-}
-
-int	check_for_error(int argc, char *argv[])
-{
-	if (argc < 5)
-		return (ft_error(), 1);
-	if (ft_atoi(argv[1]) <= 0 || ft_atoi(argv[2]) < 0
-		|| ft_atoi(argv[3]) < 0 || ft_atoi(argv[4]) < 0)
-		return (printf("%s nr_philo t_die t_eat t_sleep [times_to_eat]\n",
-				argv[0]), -1);
-	if (ft_atoi(argv[1]) == 1)
-	{
-		sleep_ms(ft_atoi(argv[2]));
-		printf("%lld 1 died\n", get_time_ms());
-		return (1);
-	}
-	return (0);
+	return (clean_up(universe), free(death_flag), 0);
 }
 
 int	main(int argc, char *argv[])
