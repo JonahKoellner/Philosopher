@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:29:31 by jkollner          #+#    #+#              #
-#    Updated: 2023/08/14 10:55:41 by jkollner         ###   ########.fr        #
+#    Updated: 2023/08/16 09:14:42 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS = -Wall -Wextra -Werror
 NAME = philo
 
 ## ------------------------ Source / Objects / Files -----------------------##
-SRC = philosopher.c utils.c behaviour.c graphics.c time.c death.c
+SRC = philosopher.c utils.c behaviour.c graphics.c time.c death.c errors.c
 OBJ = ${SRC:.c=.o}
 ## ------------------------ Libraries -----------------------##
 PTHREAD = -pthread

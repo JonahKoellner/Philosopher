@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/14 09:26:48 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/16 09:16:39 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int			status_print(t_person *philosoper, pthread_mutex_t *print_mutex);
 long long	get_time_ms(void);
 int			sleep_ms(int ms);
 int			death(int *death, t_person *universe, pthread_t *souls, int index);
+void		ft_error(pthread_t *s, pthread_mutex_t **m, pthread_mutex_t *p, int *d);
 
 #endif
