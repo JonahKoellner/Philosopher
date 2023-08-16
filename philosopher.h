@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 09:16:39 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/16 09:59:37 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ typedef struct s_param
 	int				*death_flag;
 }t_param;
 
+typedef struct s_universe
+{
+	t_person		*humans;
+	pthread_t		*souls;
+	pthread_mutex_t	**mutexes;
+	pthread_mutex_t	*print_mutex;
+}t_universe;
+
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 void		*philosopher_mind(void	*param);
@@ -65,6 +73,7 @@ int			status_print(t_person *philosoper, pthread_mutex_t *print_mutex);
 long long	get_time_ms(void);
 int			sleep_ms(int ms);
 int			death(int *death, t_person *universe, pthread_t *souls, int index);
-void		ft_error(pthread_t *s, pthread_mutex_t **m, pthread_mutex_t *p, int *d);
+void		ft_error(void);
+void		clean_up(t_universe *universe);
 
 #endif
