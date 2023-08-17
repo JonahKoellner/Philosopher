@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 10:53:13 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:26:37 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_universe
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 void		*philosopher_mind(void	*param);
-int			status_print(t_person *philosoper, pthread_mutex_t *print_mutex);
+int	status_print(t_person *philo, pthread_mutex_t *print_mutex, t_activity new);
 long long	get_time_ms(void);
 int			sleep_ms(int ms);
 int			death(int *death, t_person *universe, pthread_t *souls, int index);

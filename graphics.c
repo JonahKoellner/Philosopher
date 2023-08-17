@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 11:06:07 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/07 17:46:03 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:25:56 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ char	*print_activity(t_activity activity)
 		return ("");
 }
 
-int	status_print(t_person *philosoper, pthread_mutex_t *print_mutex)
+int	status_print(t_person *philo, pthread_mutex_t *print_mutex, t_activity new)
 {
 	pthread_mutex_lock(print_mutex);
+	philo->active = new;
 	printf("%lld %d is %s\n", get_time_ms(),
-		philosoper->nr, print_activity(philosoper->active));
+		philo->nr, print_activity(philo->active));
 	pthread_mutex_unlock(print_mutex);
 	return (0);
 }

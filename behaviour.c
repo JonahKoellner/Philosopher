@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   behaviour.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 11:52:17 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:26:46 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	eating(t_param *param)
 {
-	param->person->active = EAT;
-	status_print(param->person, param->print_mutex);
+	//param->person->active = EAT;
+	status_print(param->person, param->print_mutex, EAT);
 	sleep_ms(param->person->perso.t_eat);
 	param->person->stomach.last_eaten_ms = get_time_ms();
 	param->person->stomach.times_eaten++;
@@ -49,7 +49,6 @@ void	*philosopher_mind(void	*args)
 			printf("%lld %d has taken a fork\n", get_time_ms(),
 				param->person->nr);
 			eating(param);
-			param->person->active = SLEEP;
 			if (param->person->perso.t_sleep > param->person->perso.t_die)
 			{
 				sleep_ms(param->person->perso.t_die);
@@ -57,10 +56,11 @@ void	*philosopher_mind(void	*args)
 				break ;
 			}
 			sleep_ms(param->person->perso.t_sleep);
-			status_print(param->person, param->print_mutex);
+			//param->person->active = SLEEP;
+			status_print(param->person, param->print_mutex, SLEEP);
 		}
-		param->person->active = THINK;
-		status_print(param->person, param->print_mutex);
+		//param->person->active = THINK;
+		status_print(param->person, param->print_mutex, THINK);
 	}
 	if (*param->death_flag == 1)
 	{
