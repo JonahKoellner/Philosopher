@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 08:55:10 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 11:42:35 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/08/18 10:29:09 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ int	death(int *death, t_person *humans, pthread_t *souls, int index)
 	iter = 0;
 	if (*death == 1)
 	{
+		// while (iter < index)
+		// 	pthread_detach(souls[iter++]);
 		while (iter < index)
-			pthread_detach(souls[iter++]);
+			pthread_join(souls[iter++], NULL);
 	}
 	return (0);
 }

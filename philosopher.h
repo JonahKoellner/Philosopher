@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:34:58 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/17 20:26:37 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/08/18 08:52:19 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 typedef enum e_Activity{
 	EAT,
 	SLEEP,
-	THINK
+	THINK,
+	TAKEN
 }t_activity;
 
 /**
