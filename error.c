@@ -1,46 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 09:14:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/04 10:39:42 by jkollner         ###   ########.fr       */
+/*   Created: 2023/09/04 12:36:43 by jkollner          #+#    #+#             */
+/*   Updated: 2023/09/04 14:02:27 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-void	clean_up(t_universe *universe)
-{
-	int	index;
-
-	if (universe->humans != NULL)
-		free(universe->humans);
-	index = 0;
-	if (universe->souls != NULL)
-	{
-		while (universe->souls[index])
-			pthread_detach(universe->souls[index++]);
-		free(universe->souls);
-	}
-	if (universe->print_mutex != NULL)
-		free(universe->print_mutex);
-	index = 0;
-	if (universe->mutexes != NULL)
-	{
-		while (universe->mutexes[index] != NULL)
-			free(universe->mutexes[index++]);
-		free(universe->mutexes);
-	}
-	system("leaks philo");
-}
-
-int	check_for_error(int argc, char *argv[])
+int	error_check(int argc, char *argv[])
 {
 	if (argc < 5)
-		return (ft_error(), 1);
+		return (printf("%s nr_philo t_die t_eat t_sleep [times_to_eat]\n",
+				argv[0]), 1);
 	if (ft_atoi(argv[1]) <= 0 || ft_atoi(argv[2]) < 0
 		|| ft_atoi(argv[3]) < 0 || ft_atoi(argv[4]) < 0)
 		return (printf("%s nr_philo t_die t_eat t_sleep [times_to_eat]\n",
@@ -52,9 +28,4 @@ int	check_for_error(int argc, char *argv[])
 		return (1);
 	}
 	return (0);
-}
-
-void	ft_error(void)
-{
-	printf("Error occured\n");
 }
