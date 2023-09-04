@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 09:14:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/04 10:31:21 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:39:42 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	clean_up(t_universe *universe)
 {
 	int	index;
 
-	// (void)universe;
-	// (void)index;
 	if (universe->humans != NULL)
 		free(universe->humans);
 	index = 0;
