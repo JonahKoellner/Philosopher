@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:54:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/18 08:54:55 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:10:18 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	*philosopher_mind(void	*args)
 		if (!pthread_mutex_lock(param->forks[param->person->fork1])
 			&& (!pthread_mutex_lock(param->forks[param->person->fork2])))
 		{
-
 			// printf("%lld %d has taken a fork\n", get_time_ms(),
 			// 	param->person->nr);
 			status_print(param->person, param->print_mutex, TAKEN);

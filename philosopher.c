@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:29:17 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/18 10:28:20 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:06:24 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ int	create_universe(int pn, t_person *people)
 	death(death_flag, universe->humans, universe->souls, index);
 	// index = 0;
 	// while (index < pn)
-	// 	pthread_join(universe->souls[index], NULL);
-	return (clean_up(universe), free(death_flag), 0);
+		// pthread_join(universe->souls[index++], NULL);
+	// free(death_flag);
+	return (clean_up(universe), 0);
 }
 
 int	main(int argc, char *argv[])

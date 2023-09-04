@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 09:14:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/08/16 11:41:31 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:31:21 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	clean_up(t_universe *universe)
 {
 	int	index;
 
+	// (void)universe;
+	// (void)index;
 	if (universe->humans != NULL)
 		free(universe->humans);
 	index = 0;
@@ -34,6 +36,7 @@ void	clean_up(t_universe *universe)
 			free(universe->mutexes[index++]);
 		free(universe->mutexes);
 	}
+	system("leaks philo");
 }
 
 int	check_for_error(int argc, char *argv[])
