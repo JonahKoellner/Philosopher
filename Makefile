@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:29:31 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/04 14:55:21 by jkollner         ###   ########.fr        #
+#    Updated: 2023/09/05 09:28:28 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,4 +39,4 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-.PHONY: fclean
+.PHONY: all re clean fclean
