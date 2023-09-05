@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:49:23 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/04 19:37:24 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/05 09:02:47 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	still_eating(t_universe *universe, int pn)
 {
 	int	index;
 
+	index = 0;
 	while (index < pn)
 	{
 		if (access_value(universe->mutexe.var_access,
@@ -44,8 +45,8 @@ int	big_rip(t_param **params, t_universe *universe, int pn)
 	index = 0;
 	while (index < pn)
 	{
-		free(universe->humanity[index].soul);
 		pthread_join(*universe->humanity[index].soul, NULL);
+		free(universe->humanity[index].soul);
 		index++;
 	}
 	free(universe->death);
@@ -53,9 +54,6 @@ int	big_rip(t_param **params, t_universe *universe, int pn)
 	while (index < pn)
 		free(params[index++]);
 	free(params);
-	pthread_mutex_destroy(universe->mutexe.death);
-	pthread_mutex_destroy(universe->mutexe.print);
-	pthread_mutex_destroy(universe->mutexe.var_access);
 	free(universe->mutexe.forks);
 	free(universe->mutexe.death);
 	free(universe->mutexe.print);

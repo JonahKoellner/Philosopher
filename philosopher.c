@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 12:35:44 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/04 19:42:33 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/05 09:19:28 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	main(int argc, char *argv[])
 		return (printf("Allocation Error \n"), 1);
 	fill_personalities(universe->humanity, argv, pn);
 	clean_params = big_bang(universe, pn);
+	if (clean_params == NULL)
+		return (printf("Allocation Error \n"), 1);
 	the_end(universe, pn);
 	big_rip(clean_params, universe, pn);
 	return (0);

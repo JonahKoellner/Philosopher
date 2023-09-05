@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:39:35 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/04 19:45:13 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/05 08:43:50 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	access_value(pthread_mutex_t *lock, int *value)
 {
 	int	ret;
 
+	ret = 0;
 	if (!pthread_mutex_lock(lock))
 	{
 		ret = *value;
