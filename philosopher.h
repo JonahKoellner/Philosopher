@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 12:23:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/04 19:43:33 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:08:57 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_personality{
 	int			t_sleep;
 	int			hunger;
 	int			eaten;
-	long long	last_eaten;
+	int			last_eaten;
 }t_personality;
 
 typedef struct s_person {
@@ -47,12 +47,14 @@ typedef struct s_universe{
 	t_person		*humanity;
 	int				*death;
 	t_mutexe		mutexe;
+	long long int	create_moment;
 }t_universe;
 
 typedef struct s_param{
-	int			*death;
-	t_person	person;
-	t_mutexe	mutexe;
+	int				*death;
+	t_person		person;
+	t_mutexe		mutexe;
+	long long int	create_moment;
 }t_param;
 
 int			error_check(int argc, char *argv[]);
@@ -67,6 +69,9 @@ int			print_activity(t_param *resource, int nr, char *activity,
 				long long int t);
 int			big_rip(t_param **params, t_universe *s_universe, int pn);
 int			the_end(t_universe *universe, int pn);
+int			access_value(pthread_mutex_t *lock, int *value);
+int			sleep_ms_death(int ms, t_param *resource);
+int			set_value(pthread_mutex_t *lock, int *value, int to_set);
 int			access_value(pthread_mutex_t *lock, int *value);
 
 #endif

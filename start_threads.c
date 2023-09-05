@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:24:06 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/05 09:20:51 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:40:23 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ int	small_bang(t_universe *universe, t_param **params, int index, int pn)
 
 t_param	**big_bang(t_universe *universe, int pn)
 {
-	int		index;
-	t_param	**params;
+	int				index;
+	t_param			**params;
 
 	index = 0;
 	params = ft_calloc(pn, sizeof(t_param *));
 	if (params == NULL)
 		return (small_bang(universe, NULL, 0, pn), NULL);
+	universe->create_moment = get_time_ms();
 	while (index < pn)
 	{
 		params[index] = ft_calloc(1, sizeof(t_param));
@@ -58,10 +59,11 @@ t_param	**big_bang(t_universe *universe, int pn)
 		params[index]->mutexe = universe->mutexe;
 		params[index]->person = universe->humanity[index];
 		params[index]->death = universe->death;
+		params[index]->create_moment = universe->create_moment;
 		pthread_create(universe->humanity[index].soul, NULL, behaviour,
 			params[index]);
 		if (index % 2 == 0)
-			sleep_ms(index);
+			usleep(10);
 		index++;
 	}
 	return (params);
