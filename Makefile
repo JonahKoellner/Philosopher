@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
+#    By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:29:31 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/05 15:13:49 by jkollner         ###   ########.fr        #
+#    Updated: 2023/09/06 06:24:23 by jonahkollne      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:49:23 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/05 16:49:25 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/06 05:42:56 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	outside_death(t_universe *universe, int pn)
 		{
 			set_value(universe->mutexe.death, universe->death, 1);
 			pthread_mutex_lock(universe->mutexe.print);
-			printf("%lld\t %d died\n", now - universe->create_moment, index + 1);
+			printf("%lld\t %d died %d\n", now - universe->create_moment, index + 1, access_value(universe->mutexe.var_access,
+					&universe->humanity[index].perso.last_eaten));
 			pthread_mutex_unlock(universe->mutexe.print);
 			return (1);
 		}

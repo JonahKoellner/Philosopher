@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 12:23:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/05 15:08:57 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/06 05:41:49 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_universe{
 
 typedef struct s_param{
 	int				*death;
-	t_person		person;
+	t_person		*person;
 	t_mutexe		mutexe;
 	long long int	create_moment;
 }t_param;

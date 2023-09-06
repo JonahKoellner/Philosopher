@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_threads.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:24:06 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/05 15:40:23 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/06 06:22:34 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ t_param	**big_bang(t_universe *universe, int pn)
 		if (params[index] == NULL)
 			return (small_bang(universe, params, index, pn), NULL);
 		params[index]->mutexe = universe->mutexe;
-		params[index]->person = universe->humanity[index];
+		params[index]->person = &universe->humanity[index];
 		params[index]->death = universe->death;
 		params[index]->create_moment = universe->create_moment;
 		pthread_create(universe->humanity[index].soul, NULL, behaviour,
 			params[index]);
 		if (index % 2 == 0)
-			usleep(10);
+			sleep_ms(1);
 		index++;
 	}
 	return (params);
